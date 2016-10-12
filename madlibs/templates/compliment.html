@@ -4,7 +4,22 @@
   <title>A Compliment</title>
 </head>
 <body>
-  Hi {{ person }}! I think you're {{ compliment }}!
+  Hi {{ person }}! I think you're 
+
+    {% if compliment|length == 1 %} 
+      {{ compliment[0] }}! 
+
+    {% elif compliment|length == 2 %}
+      {{ compliment[0] }} and {{ compliment[1] }}!
+
+    {% elif compliment|length > 2 %}
+      {% for compliment in compliment[:-1] %}
+          {{ compliment }}, 
+      {% endfor %}
+
+      and {{ compliment[-1] }}! 
+    {% endif %}
+
   <form action='/game'>
     <label> Do you want to play a game?</label>
     <input type='radio' name='want_to_play' value='yes'> Yes

@@ -1,4 +1,4 @@
-from random import choice
+from random import sample, randint
 
 from flask import Flask, render_template, request
 
@@ -32,7 +32,7 @@ def greet_person():
 
     player = request.args.get("person")
 
-    compliment = choice(AWESOMENESS)
+    compliment = sample(AWESOMENESS, randint(1, len(AWESOMENESS)))
 
     return render_template("compliment.html",
                            person=player,
@@ -55,6 +55,8 @@ def show_madlib_form():
 def show_madlib():
     """Displays madlib results"""
 
+
+    all_fields_present = False
     name = request.form.get("name")
     noun = request.form.get("noun")
     adjective = request.form.get("adjective")
@@ -62,8 +64,12 @@ def show_madlib():
     color = request.form.get("color")
     animal = request.form.getlist("animal")
 
-    return render_template("madlib.html", name=name, noun=noun, adjective=adjective, 
+    if name and noun and adjective and adverb and color:
+        return render_template("madlib.html", name=name, noun=noun, adjective=adjective, 
                            color=color, adverb=adverb, animal=animal )
+    else:
+        return render_template("game.html", all_fields_present=all_fields_present)
+
 
 if __name__ == '__main__':
     # debug=True gives us error messages in the browser and also "reloads" our web app

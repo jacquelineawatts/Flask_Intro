@@ -4,6 +4,9 @@
   <title>Game</title>
 </head>
 <body>
+  {% if all_fields_present == False %}
+    <p>Please enter all fields before submitting!</p>
+  {% endif %}
   <form action="/madlib" method="POST">
     <label>Please enter a person's name: </label><input type="text" name="name"><br> 
     <label>Please enter a noun: </label><input type="text" name="noun"><br> 
