@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>Game</title>
+</head>
+<body>
+  <form action="/madlib" method="POST">
+    <label>Please enter a person's name: </label><input type="text" name="name"><br> 
+    <label>Please enter a noun: </label><input type="text" name="noun"><br> 
+    <label>Please enter an adjective: </label><input type="text" name="adjective"><br>
+    <label>Please enter an adverb: </label><input type="text" name="adverb"><br>
+    <label>Please select a color:</label>
+    <select name="color">
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="yellow">Yellow</option>
+    </select><br>
+    
+    <label>Select an animal (or two)</label>
+    <input type="checkbox" name="animal" value="yak">Yak
+    <input type="checkbox" name="animal" value="platypus">Platypus
+    <input type="checkbox" name="animal" value="condor">Condor
+    <input type="checkbox" name="animal" value="komodo dragon">Komodo Dragon
+
+    <input type="submit">
+  </form>
+</body>
+</html>

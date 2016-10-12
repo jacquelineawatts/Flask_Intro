@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block title %}Your Madlib{% endblock %}
+
+{% block content %}
+<p>There once was a {{ color }} {{ noun }} sitting {{ adverb }} in the Hackbright Lab. When 
+    {{ name }} went to pick it up, it burst into flames in a totally {{ adjective }} 
+    way while a 
+
+    {% if animal|length == 1 %} 
+      {{ animal[0] }} was 
+
+    {% elif animal|length == 2 %}
+      {{ animal[0] }} and {{ animal[1] }} were
+
+    {% elif animal|length > 2 %}
+      {% for animal in animal[:-1] %}
+          {{ animal }}, 
+      {% endfor %}
+
+      and {{ animal[-1] }} were 
+
+
+    {% endif %}
+    passing by.</p>
+  
+  {% endblock %}
